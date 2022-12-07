@@ -1,32 +1,24 @@
-// import React from 'react';
-// // import { adds } from './adds';
-// import Checkif from './Checkif';
+import React from 'react';
+import Checkif from './Checkif';
 
-// const Ads = ({n2}) =>{
-// 		const n1 = n2.split(" ");
-// 		return(
-// 			<div className="tc">{			
-// 			    n1.map((user,i)=>{
-// 			    	return(
-// 			    		fetch('http://localhost:3000/', {
-// 					        method: 'post',
-// 					        headers: {'Content-Type': 'application/json'},
-// 					        body: JSON.stringify({
-// 					            s:n1
-// 					       	})
-// 				        })
-// 				        .then(response => response.json())
-// 				        .then(count => {
-// 				        	count.length === 0?
-// 				        	<></>:
-// 				        	<Checkif key={count.imageUrl}
-// 			    			s={count.imageUrl}/>
-// 				        })
-// 			    	)
-// 			    })
-// 			}
-// 			</div>
-// 		)
-// }
+const Ads = ({n1}) =>{
+		return(
+			<div className="tc">{	
+				fetch('http://localhost:3000/')
+			    .then(response=>response.json())
+			    .then(adds => {	
+				    	adds.map((user)=>{
+				    	return(
+				    		<Checkif key={user.name}
+				    		name={user.name}
+				    		url={user.imageUrl} 
+				    		s1={n1}/>
+				    	)
+			    	})	
+			    })
+			}
+			</div>
+		)
+}
 
-// export default Ads;
+export default Ads;
