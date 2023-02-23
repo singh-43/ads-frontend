@@ -1,22 +1,29 @@
-import React, { Component } from 'react';
-// import Ads from './Ads';
+import React from 'react';
+// import Checkif from './Checkif';
 
 const ShowAds = ( {search} ) => {
   const n = search.split(" ");
-  return (
-    <div className="center">{   
-      n.map((user)=>{
-        return (
-          fetch('http://localhost:3000/',{
+  const callapi =(user)=> {
+              fetch('http://localhost:3001/show',{
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              input: n
+              input: user
             })
           })
           .then(response=>response.json())
-          .then(adds => console.log(adds))
-        )  
+          .then(adds =>
+            console.log(adds)                          
+          )
+  }
+  return (
+
+    <div className="center">{   
+      n.map((user)=>{
+        callapi(user)
+        return (
+          console.log("Image")
+        )         
       })
     }
     </div>
